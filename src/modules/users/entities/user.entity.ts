@@ -7,10 +7,14 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @Column({ name: 'name', length: 255, nullable: false })
   name: string;
 
