@@ -1,4 +1,5 @@
 import { getRounds, hashSync } from 'bcryptjs';
+import { Reservation } from 'src/modules/reservation/entities/reservation.entity';
 import {
   Entity,
   Column,
@@ -8,6 +9,7 @@ import {
   BeforeInsert,
   BeforeUpdate,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity({ name: 'users' })
@@ -35,6 +37,9 @@ export class User {
 
   @DeleteDateColumn({ type: 'date' })
   deletedAt: string | null;
+
+  @OneToMany(() => Reservation, (reservations) => reservations.user)
+  reservations: Reservation[];
 
   @BeforeInsert()
   @BeforeUpdate()

@@ -1,5 +1,8 @@
-import { PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Movie } from 'src/modules/movie/entities/movie.entity';
+import { User } from 'src/modules/users/entities/user.entity';
+import { PrimaryGeneratedColumn, Column, Entity, ManyToOne } from 'typeorm';
 
+@Entity({ name: 'reservations' })
 export class Reservation {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -12,4 +15,10 @@ export class Reservation {
 
   @PrimaryGeneratedColumn('uuid')
   reservationCode: string;
+
+  @ManyToOne(() => User, (users) => users.reservations)
+  user: User;
+
+  @ManyToOne(() => Movie, (movies) => movies.reservations)
+  movie: Movie;
 }

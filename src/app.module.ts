@@ -8,6 +8,8 @@ import { PostgresConfigService } from './config/postgres.config.service';
 import { ConfigModule } from '@nestjs/config';
 import { ReservationModule } from './modules/reservation/reservation.module';
 import { GenreModule } from './modules/genre/genre.module';
+import { PosterModule } from './modules/poster/poster.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { GenreModule } from './modules/genre/genre.module';
     }),
     ReservationModule,
     GenreModule,
+    PosterModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
