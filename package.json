@@ -7,6 +7,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
+    "migration:generate": "npm run typeorm -- migration:generate -d src/config/typeorm.config.ts -n",
+    "migration:run": "npm run typeorm -- migration:run -d src/config/typeorm.config.ts",
+    "migration:revert": "npm run typeorm -- migration:revert -d src/config/typeorm.config.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -26,6 +30,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/typeorm": "^10.0.2",
+    "arg": "^5.0.2",
     "bcryptjs": "^2.4.3",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.2.0",
@@ -52,7 +57,7 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.1.0",
     "ts-loader": "^9.4.3",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.3"
   },
